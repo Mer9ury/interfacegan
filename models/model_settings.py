@@ -59,6 +59,48 @@ MODEL_POOL = {
         'channel_order': 'RGB',
         'fused_scale': 'auto',
     },
+    'stylegan2_ffhq': {
+        'tf_model_path': MODEL_DIR + '/karras2019stylegan-ffhq-1024x1024.pkl',
+        'model_path': MODEL_DIR + '/stylegan2_ffhq1024.pth',
+        'gan_type': 'stylegan2',
+        'dataset_name': 'ffhq',
+        'latent_space_dim': 512,
+        'w_space_dim': 512,
+        'resolution': 1024,
+        'min_val': -1.0,
+        'max_val': 1.0,
+        'output_channels': 3,
+        'channel_order': 'RGB',
+        'fused_scale': 'auto',
+    },
+    'stylegan2_afhqcat': {
+        'tf_model_path': MODEL_DIR + '/karras2019stylegan-ffhq-1024x1024.pkl',
+        'model_path': MODEL_DIR + '/stylegan2_afhqcat512.pth',
+        'gan_type': 'stylegan2',
+        'dataset_name': 'afhqcat',
+        'latent_space_dim': 512,
+        'w_space_dim': 512,
+        'resolution': 512,
+        'min_val': -1.0,
+        'max_val': 1.0,
+        'output_channels': 3,
+        'channel_order': 'RGB',
+        'fused_scale': 'auto',
+    },
+    'stylegan2_afhqdog': {
+        'tf_model_path': MODEL_DIR + '/karras2019stylegan-ffhq-1024x1024.pkl',
+        'model_path': MODEL_DIR + '/stylegan2_afhqdog512.pth',
+        'gan_type': 'stylegan2',
+        'dataset_name': 'afhqdog',
+        'latent_space_dim': 512,
+        'w_space_dim': 512,
+        'resolution': 512,
+        'min_val': -1.0,
+        'max_val': 1.0,
+        'output_channels': 3,
+        'channel_order': 'RGB',
+        'fused_scale': 'auto',
+    }
 }
 
 # Settings for StyleGAN.
@@ -69,4 +111,4 @@ STYLEGAN_RANDOMIZE_NOISE = False
 # Settings for model running.
 USE_CUDA = True
 
-MAX_IMAGES_ON_DEVICE = 4
+MAX_IMAGES_ON_DEVICE = 2

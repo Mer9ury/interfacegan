@@ -18,6 +18,7 @@ from tqdm import tqdm
 from models.model_settings import MODEL_POOL
 from models.pggan_generator import PGGANGenerator
 from models.stylegan_generator import StyleGANGenerator
+from models.stylegan2_generator import StyleGAN2Generator
 from utils.logger import setup_logger
 
 
@@ -63,6 +64,9 @@ def main():
   elif gan_type == 'stylegan':
     model = StyleGANGenerator(args.model_name, logger)
     kwargs = {'latent_space_type': args.latent_space_type}
+  elif gan_type == 'stylegan2':
+    model = StyleGAN2Generator(args.model_name, logger)
+    kwargs = {'latent_space_type': args.latent_space_type}
   else:
     raise NotImplementedError(f'Not implemented GAN type `{gan_type}`!')
 
@@ -82,7 +86,7 @@ def main():
   for latent_codes_batch in model.get_batch_inputs(latent_codes):
     if gan_type == 'pggan':
       outputs = model.easy_synthesize(latent_codes_batch)
-    elif gan_type == 'stylegan':
+    elif gan_type == 'stylegan' or 'stylegan2':
       outputs = model.easy_synthesize(latent_codes_batch,
                                       **kwargs,
                                       generate_style=args.generate_style,

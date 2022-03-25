@@ -320,6 +320,7 @@ class TruncationModule(nn.Module):
     self.register_buffer('truncation', torch.from_numpy(coefs))
 
   def forward(self, w):
+    print(w.shape)
     if len(w.shape) == 2:
       w = w.view(-1, 1, self.w_space_dim).repeat(1, self.num_layers, 1)
     if self.use_truncation:
